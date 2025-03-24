@@ -116,11 +116,11 @@
     flex: 1;
 }
 
-/* Reproductor de audio estilo untitled.stream */
-.audio-player-container {
+/* Reproductor de YouTube minimalista */
+.youtube-player-container {
     position: fixed;
     bottom: 20px;
-    left: 20px; /* Posicionado en la esquina inferior izquierda */
+    left: 20px;
     width: 300px;
     background-color: rgba(20, 20, 30, 0.85);
     border-radius: 12px;
@@ -133,19 +133,19 @@
     color: #fff;
 }
 
-.audio-player-container.minimized {
+.youtube-player-container.minimized {
     height: 60px;
     overflow: hidden;
 }
 
-.audio-player-header {
+.youtube-player-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.audio-player-title {
+.youtube-player-title {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -153,7 +153,7 @@
     margin-right: 10px;
 }
 
-.track-title {
+.video-title {
     font-size: 14px;
     font-weight: bold;
     white-space: nowrap;
@@ -162,7 +162,7 @@
     color: #fff;
 }
 
-.artist-name {
+.channel-name {
     font-size: 12px;
     color: #aaa;
     white-space: nowrap;
@@ -170,7 +170,7 @@
     text-overflow: ellipsis;
 }
 
-.audio-player-toggle {
+.youtube-player-toggle {
     background: transparent;
     border: none;
     cursor: pointer;
@@ -178,13 +178,13 @@
     padding: 5px;
 }
 
-.audio-player-toggle svg {
+.youtube-player-toggle svg {
     fill: #fff;
     width: 16px;
     height: 16px;
 }
 
-.album-art {
+.youtube-thumbnail {
     width: 50px;
     height: 50px;
     border-radius: 8px;
@@ -192,115 +192,119 @@
     object-fit: cover;
 }
 
-.audio-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.audio-control-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    padding: 5px;
-}
-
-.audio-control-button svg {
-    fill: #fff;
-    width: 20px;
-    height: 20px;
-    transition: fill 0.2s ease;
-}
-
-.audio-control-button:hover svg {
-    fill: #ff3366;
-}
-
-.audio-control-button.active svg {
-    fill: #ff3366;
-}
-
-.progress-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.time {
-    font-size: 12px;
-    color: #aaa;
-    width: 40px;
-    text-align: center;
-}
-
-.progress-bar {
-    flex: 1;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-    overflow: hidden;
-    margin: 0 5px;
-    cursor: pointer;
+.youtube-frame-container {
+    width: 100%;
     position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
-.progress-fill {
+.youtube-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    width: 0%; /* Inicializado en 0% en lugar de 30% */
-    background: linear-gradient(to right, #ff3366, #ff6b6b);
-    border-radius: 2px;
-    transition: width 0.1s linear;
+    border: none;
+    border-radius: 8px;
 }
 
-.playlist {
-    max-height: 200px;
+.youtube-search-container {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.youtube-search-input {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+}
+
+.youtube-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.youtube-search-button {
+    background-color: #ff0000;
+    border: none;
+    border-radius: 4px;
+    margin-left: 8px;
+    padding: 0 12px;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.youtube-search-button:hover {
+    background-color: #cc0000;
+}
+
+.youtube-history {
+    max-height: 150px;
     overflow-y: auto;
     margin-top: 10px;
 }
 
-.playlist::-webkit-scrollbar {
+.youtube-history::-webkit-scrollbar {
     width: 5px;
 }
 
-.playlist::-webkit-scrollbar-track {
+.youtube-history::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.playlist::-webkit-scrollbar-thumb {
+.youtube-history::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
 }
 
-.playlist-album {
-    margin-bottom: 10px;
-}
-
-.playlist-album-header {
-    font-size: 12px;
-    color: #aaa;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.playlist-track {
-    padding: 5px;
+.youtube-history-item {
+    padding: 8px;
     font-size: 12px;
     color: #fff;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
 }
 
-.playlist-track:hover {
+.youtube-history-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.playlist-track.active {
-    background-color: rgba(255, 51, 102, 0.2);
-    color: #ff3366;
+.youtube-history-item.active {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.youtube-history-thumbnail {
+    width: 40px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 8px;
+    object-fit: cover;
+}
+
+.youtube-history-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.youtube-history-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
 }
 
 /* Resto de estilos */
@@ -308,21 +312,105 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
+    background-color: #000000;
     color: #fff;
     min-height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
-body::before {
-    content: '';
+/* Fondo tipo galaxia */
+.stars-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(40, 40, 60, 0.8) 0%, rgba(18, 18, 18, 1) 70%);
+    z-index: -2;
+    overflow: hidden;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 230px 190px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    animation: stars-animation 100s linear infinite;
+    opacity: 0.6;
+}
+
+.stars2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 100px 150px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 200px 220px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 300px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 400px 250px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 500px 100px, #eee, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    animation: stars-animation 150s linear infinite;
+    opacity: 0.4;
+}
+
+.stars3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 50px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 150px 120px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 250px 180px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 350px 250px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 450px 320px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    animation: stars-animation 200s linear infinite;
+    opacity: 0.3;
+}
+
+.nebula {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(128, 0, 128, 0.15), rgba(0, 0, 0, 0) 30%),
+        radial-gradient(circle at 70% 60%, rgba(0, 0, 128, 0.1), rgba(0, 0, 0, 0) 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 128, 128, 0.05), rgba(0, 0, 0, 0) 60%);
+    filter: blur(8px);
     z-index: -1;
+}
+
+@keyframes stars-animation {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-250px);
+    }
+}
+
+.galaxy-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at center, rgba(40, 40, 80, 0.2) 0%, rgba(0, 0, 0, 0) 70%),
+        radial-gradient(ellipse at 30% 40%, rgba(60, 0, 60, 0.15) 0%, rgba(0, 0, 0, 0) 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(0, 30, 60, 0.15) 0%, rgba(0, 0, 0, 0) 60%);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -332,6 +420,8 @@ body::before {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 /* Header styles */
@@ -615,7 +705,7 @@ footer {
         width: 100px;
     }
     
-    .audio-player-container {
+    .youtube-player-container {
         width: 250px;
     }
     
@@ -648,7 +738,7 @@ footer {
         margin: 5px 0;
     }
     
-    .audio-player-container {
+    .youtube-player-container {
         width: 200px;
     }
     
