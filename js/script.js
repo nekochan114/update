@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rgbTubeFill.style.width = fillPercentage + '%';
     });
 
-    // Audio player functionality
-    const audioPlayer = document.getElementById('audio-player');
+    // Audio player functionality - Estilo untitled.stream
     const audioPlayerContainer = document.getElementById('audio-player-container');
     const togglePlayerBtn = document.getElementById('toggle-player');
     const playPauseBtn = document.getElementById('play-pause');
@@ -50,68 +49,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const albumArtEl = document.getElementById('album-art');
     const playlistEl = document.getElementById('playlist');
 
-    // Audio library
+    // Audio library - Canciones de ejemplo con URLs reales
     const audioLibrary = [
         // Breakcore artists
         {
             artist: 'Sewerslvt',
             album: 'Draining Love Story',
             tracks: [
-                { title: 'Ecifircas', file: 'audio/sewerslvt_ecifircas.mp3' },
-                { title: 'Mr. Kill Myself', file: 'audio/sewerslvt_mr_kill_myself.mp3' },
-                { title: 'Inlove', file: 'audio/sewerslvt_inlove.mp3' }
+                { title: 'Ecifircas', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Yung_Kartz/August_2019/Yung_Kartz_-_01_-_Eternity.mp3' },
+                { title: 'Mr. Kill Myself', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Yung_Kartz/August_2019/Yung_Kartz_-_02_-_Progression.mp3' },
+                { title: 'Inlove', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Yung_Kartz/August_2019/Yung_Kartz_-_03_-_Memories.mp3' }
             ]
         },
         {
             artist: 'Death Dynamic Shroud',
             album: 'Faith In Persona',
             tracks: [
-                { title: 'Ghost', file: 'audio/dds_ghost.mp3' },
-                { title: 'Judgment Bolt', file: 'audio/dds_judgment_bolt.mp3' }
+                { title: 'Ghost', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_03_-_Contention.mp3' },
+                { title: 'Judgment Bolt', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_05_-_Downfall.mp3' }
             ]
         },
         {
             artist: 'Sabuze',
             album: 'Breakcore Mix',
             tracks: [
-                { title: 'Neon Lights', file: 'audio/sabuze_neon_lights.mp3' },
-                { title: 'Digital Dreams', file: 'audio/sabuze_digital_dreams.mp3' }
+                { title: 'Neon Lights', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Raising_Frequency/Ketsa_-_08_-_Multiverse.mp3' },
+                { title: 'Digital Dreams', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Algorithms.mp3' }
             ]
         },
         {
             artist: '2hollis',
             album: 'Breakcore Collection',
             tracks: [
-                { title: 'Hyperspace', file: 'audio/2hollis_hyperspace.mp3' },
-                { title: 'Glitch Reality', file: 'audio/2hollis_glitch_reality.mp3' }
+                { title: 'Hyperspace', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_07_-_Anxiety.mp3' },
+                { title: 'Glitch Reality', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_08_-_Illumination.mp3' }
             ]
         },
         {
             artist: 'Remilia Bandxz',
             album: 'Digital Fragments',
             tracks: [
-                { title: 'Broken Pixels', file: 'audio/remilia_broken_pixels.mp3' },
-                { title: 'Cyber Tears', file: 'audio/remilia_cyber_tears.mp3' }
+                { title: 'Broken Pixels', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3' },
+                { title: 'Cyber Tears', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Moonrise.mp3' }
             ]
         },
-        // Kanye West latest album
+        // Kanye West latest album (usando música libre con derechos de uso)
         {
             artist: 'Kanye West',
             album: 'Vultures 1',
             tracks: [
-                { title: 'Stars', file: 'audio/kanye_stars.mp3' },
-                { title: 'Talking', file: 'audio/kanye_talking.mp3' },
-                { title: 'Vultures', file: 'audio/kanye_vultures.mp3' }
+                { title: 'Stars', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3' },
+                { title: 'Talking', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3' },
+                { title: 'Vultures', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Skatepark.mp3' }
             ]
         },
-        // Playboi Carti latest album
+        // Playboi Carti latest album (usando música libre con derechos de uso)
         {
             artist: 'Playboi Carti',
             album: 'Music',
             tracks: [
-                { title: 'H00DBYAIR', file: 'audio/carti_h00dbyair.mp3' },
-                { title: 'BACKR00MS', file: 'audio/carti_backr00ms.mp3' },
-                { title: '2024', file: 'audio/carti_2024.mp3' }
+                { title: 'H00DBYAIR', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3' },
+                { title: 'BACKR00MS', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Rainbow_Architecture.mp3' },
+                { title: '2024', file: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3' }
             ]
         }
     ];
@@ -148,42 +147,64 @@ document.addEventListener('DOMContentLoaded', function() {
         const album = audioLibrary[albumIndex];
         const track = album.tracks[trackIndex];
         
+        // Detener la reproducción actual y cargar la nueva pista
+        audio.pause();
         audio.src = track.file;
         audio.load();
         
         trackTitleEl.textContent = track.title;
         artistNameEl.textContent = album.artist;
-        albumArtEl.src = `images/albums/${album.artist.toLowerCase().replace(/\s+/g, '_')}.jpg`;
+        
+        // Intentar cargar la imagen del álbum, o usar una imagen predeterminada
+        try {
+            albumArtEl.src = `images/albums/${album.artist.toLowerCase().replace(/\s+/g, '_')}.jpg`;
+            albumArtEl.onerror = function() {
+                albumArtEl.src = 'https://via.placeholder.com/50x50?text=Album';
+            };
+        } catch (e) {
+            albumArtEl.src = 'https://via.placeholder.com/50x50?text=Album';
+        }
+        
         albumArtEl.alt = `${album.artist} - ${album.album}`;
         
-        // Update times
+        // Actualizar tiempos
         currentTimeEl.textContent = '0:00';
+        
+        // Reiniciar la barra de progreso
+        progressFill.style.width = '0%';
+        
+        // Configurar eventos de audio
         audio.addEventListener('loadedmetadata', function() {
             totalTimeEl.textContent = formatTime(audio.duration);
         });
         
-        // Set up progress tracking
+        // Configurar seguimiento de progreso
         audio.addEventListener('timeupdate', updateProgress);
         
-        // Auto play next track when current one ends
+        // Reproducir automáticamente la siguiente pista cuando termine la actual
         audio.addEventListener('ended', playNextTrack);
+        
+        // Actualizar la lista de reproducción para resaltar la pista actual
+        updatePlaylist();
     }
 
-    // Format time in mm:ss
+    // Formatear tiempo en mm:ss
     function formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Update progress bar
+    // Actualizar barra de progreso
     function updateProgress() {
+        if (isNaN(audio.duration)) return;
         const percent = (audio.currentTime / audio.duration) * 100;
         progressFill.style.width = `${percent}%`;
         currentTimeEl.textContent = formatTime(audio.currentTime);
     }
 
-    // Play/Pause
+    // Reproducir/Pausar
     playPauseBtn.addEventListener('click', togglePlayPause);
     
     function togglePlayPause() {
@@ -191,21 +212,32 @@ document.addEventListener('DOMContentLoaded', function() {
             audio.pause();
             playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
         } else {
-            audio.play();
-            playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Reproducción iniciada con éxito
+                    playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+                }).catch(error => {
+                    // Error al iniciar la reproducción (común en navegadores que bloquean la reproducción automática)
+                    console.error("Error al reproducir audio:", error);
+                    isPlaying = false;
+                    playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+                });
+            }
         }
         isPlaying = !isPlaying;
     }
 
-    // Previous track
+    // Pista anterior
     prevBtn.addEventListener('click', playPrevTrack);
     
     function playPrevTrack() {
         if (audio.currentTime > 3) {
-            // If more than 3 seconds into song, restart current song
+            // Si llevamos más de 3 segundos en la canción, reiniciar la canción actual
             audio.currentTime = 0;
         } else {
-            // Go to previous track
+            // Ir a la pista anterior
             currentTrackIndex--;
             if (currentTrackIndex < 0) {
                 currentAlbumIndex = (currentAlbumIndex - 1 + audioLibrary.length) % audioLibrary.length;
@@ -213,30 +245,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             loadTrack(currentAlbumIndex, currentTrackIndex);
             if (isPlaying) {
-                audio.play();
+                audio.play().catch(e => console.error("Error al reproducir audio:", e));
             }
         }
     }
 
-    // Next track
+    // Siguiente pista
     nextBtn.addEventListener('click', playNextTrack);
     
     function playNextTrack() {
         if (repeatMode === 'one') {
-            // Repeat current track
+            // Repetir pista actual
             audio.currentTime = 0;
-            audio.play();
+            audio.play().catch(e => console.error("Error al reproducir audio:", e));
             return;
         }
         
-        // Go to next track
+        // Ir a la siguiente pista
         currentTrackIndex++;
         if (currentTrackIndex >= audioLibrary[currentAlbumIndex].tracks.length) {
             if (repeatMode === 'all' || isShuffled) {
                 currentAlbumIndex = (currentAlbumIndex + 1) % audioLibrary.length;
                 currentTrackIndex = 0;
             } else {
-                // Stop at end of album
+                // Detenerse al final del álbum
                 currentTrackIndex = audioLibrary[currentAlbumIndex].tracks.length - 1;
                 isPlaying = false;
                 playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
@@ -245,53 +277,60 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         loadTrack(currentAlbumIndex, currentTrackIndex);
         if (isPlaying) {
-            audio.play();
+            audio.play().catch(e => console.error("Error al reproducir audio:", e));
         }
     }
 
-    // Shuffle
+    // Aleatorio
     shuffleBtn.addEventListener('click', function() {
         isShuffled = !isShuffled;
         shuffleBtn.classList.toggle('active', isShuffled);
     });
 
-    // Repeat
+    // Repetir
     repeatBtn.addEventListener('click', function() {
         switch (repeatMode) {
             case 'none':
                 repeatMode = 'all';
                 repeatBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>';
+                repeatBtn.classList.add('active');
                 break;
             case 'all':
                 repeatMode = 'one';
                 repeatBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4zm-4-2V9h-1l-2 1v1h1.5v4H13z"/></svg>';
+                repeatBtn.classList.add('active');
                 break;
             case 'one':
                 repeatMode = 'none';
                 repeatBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>';
+                repeatBtn.classList.remove('active');
                 break;
         }
     });
 
-    // Volume control
+    // Control de volumen
     volumeBtn.addEventListener('click', function() {
         if (audio.volume > 0) {
             audio.volume = 0;
             volumeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+            volumeBtn.classList.add('active');
         } else {
             audio.volume = 1;
             volumeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+            volumeBtn.classList.remove('active');
         }
     });
 
-    // Progress bar click
+    // Clic en la barra de progreso
     progressBar.addEventListener('click', function(e) {
-        const percent = e.offsetX / progressBar.offsetWidth;
+        if (isNaN(audio.duration)) return;
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
         audio.currentTime = percent * audio.duration;
         progressFill.style.width = `${percent * 100}%`;
     });
 
-    // Update playlist
+    // Actualizar lista de reproducción
     function updatePlaylist() {
         playlistEl.innerHTML = '';
         
@@ -319,9 +358,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 trackEl.addEventListener('click', function() {
                     loadTrack(albumIndex, trackIndex);
                     isPlaying = true;
-                    audio.play();
+                    audio.play().catch(e => console.error("Error al reproducir audio:", e));
                     playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-                    updatePlaylist();
                 });
                 tracksList.appendChild(trackEl);
             });
@@ -331,10 +369,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize player
+    // Inicializar reproductor
     initPlayer();
 
-    // Add some particle effects to the background
+    // Agregar efectos de partículas al fondo
     createParticles();
 });
 
@@ -396,7 +434,7 @@ function createParticle(container) {
     
     container.appendChild(particle);
     
-    // Remove and recreate particle after animation ends
+    // Eliminar y recrear partícula después de que termine la animación
     setTimeout(() => {
         container.removeChild(particle);
         document.head.removeChild(style);
