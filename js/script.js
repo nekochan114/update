@@ -59,7 +59,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Crear el reproductor de YouTube
     createYoutubePlayer();
+    
+    // Hacer que las tarjetas sociales redireccionen a sus respectivas páginas
+    setupSocialCards();
 });
+
+// Función para configurar las tarjetas sociales
+function setupSocialCards() {
+    const socialCards = document.querySelectorAll('.social-card');
+    
+    const urls = {
+        'Twitch': 'https://www.twitch.tv',
+        'YouTube': 'https://www.youtube.com',
+        'X.com': 'https://twitter.com',
+        '4chan': 'https://www.4chan.org'
+    };
+    
+    socialCards.forEach(card => {
+        const title = card.querySelector('h3').textContent;
+        if (urls[title]) {
+            card.addEventListener('click', function() {
+                window.open(urls[title], '_blank');
+            });
+            card.style.cursor = 'pointer';
+        }
+    });
+}
 
 // Función para crear el reproductor de YouTube
 function createYoutubePlayer() {
@@ -72,11 +97,11 @@ function createYoutubePlayer() {
     const header = document.createElement('div');
     header.className = 'youtube-player-header';
     
-    // Crear la miniatura
+    // Crear la miniatura (usando la imagen de Miku)
     const thumbnail = document.createElement('img');
     thumbnail.className = 'youtube-thumbnail';
-    thumbnail.src = 'https://i.ytimg.com/vi/dQw4w9WgXcQ/default.jpg';
-    thumbnail.alt = 'Video Thumbnail';
+    thumbnail.src = 'images/miku.gif';
+    thumbnail.alt = 'Miku Thumbnail';
     
     // Crear el título
     const titleContainer = document.createElement('div');
@@ -84,7 +109,7 @@ function createYoutubePlayer() {
     
     const videoTitle = document.createElement('div');
     videoTitle.className = 'video-title';
-    videoTitle.textContent = 'YouTube Player';
+    videoTitle.textContent = 'Reproductor de YouTube';
     
     const channelName = document.createElement('div');
     channelName.className = 'channel-name';
@@ -208,7 +233,11 @@ function setupYoutubePlayerEvents() {
         
         videoTitle.textContent = title;
         channelName.textContent = channel;
-        thumbnail.src = `https://i.ytimg.com/vi/${videoId}/default.jpg`;
+        
+        // Mantener la imagen de Miku como miniatura
+        if (videoId !== 'jhl5afLEKdo') {
+            thumbnail.src = 'images/miku.gif';
+        }
         
         // Agregar al historial si no existe
         const existingIndex = videoHistory.findIndex(v => v.id === videoId);
@@ -247,7 +276,7 @@ function setupYoutubePlayerEvents() {
             
             const historyThumbnail = document.createElement('img');
             historyThumbnail.className = 'youtube-history-thumbnail';
-            historyThumbnail.src = `https://i.ytimg.com/vi/${video.id}/default.jpg`;
+            historyThumbnail.src = 'images/miku.gif';
             historyThumbnail.alt = video.title;
             
             const historyInfo = document.createElement('div');
@@ -299,9 +328,9 @@ function setupYoutubePlayerEvents() {
         }
     });
     
-    // Cargar un video de ejemplo al inicio
-    loadVideo('dQw4w9WgXcQ', {
-        title: 'Never Gonna Give You Up',
-        channel: 'Rick Astley'
+    // Cargar un video de Miku al inicio
+    loadVideo('jhl5afLEKdo', {
+        title: 'Hatsune Miku',
+        channel: 'Vocaloid'
     });
 }
